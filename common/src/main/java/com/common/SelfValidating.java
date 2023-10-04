@@ -1,4 +1,4 @@
-package com.membershipservice.common;
+package com.common;
 
 import javax.validation.*;
 import java.util.Set;
