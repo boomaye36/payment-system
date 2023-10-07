@@ -1,9 +1,9 @@
 package com.membershipservice.adapter.out.persistence;
 
+import com.common.PersistenceAdapter;
 import com.membershipservice.application.port.out.FindMembershipPort;
 import com.membershipservice.application.port.out.ModifyMembershipPort;
 import com.membershipservice.application.port.out.RegisterMembershipPort;
-import com.membershipservice.common.PersistenceAdapter;
 import com.membershipservice.domain.Membership;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

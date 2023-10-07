@@ -36,13 +36,10 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
-
     implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
     implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
-    runtimeOnly 'com.h2database:h2'
-    implementation project(path: ':common')
-    implementation project(path: ':membership-service')
-
+    implementation 'mysql:mysql-connector-java'
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
     testImplementation('com.squareup.okhttp3:okhttp:4.10.0')
     testImplementation('com.squareup.okhttp3:mockwebserver:4.10.0')
 }
@@ -50,5 +47,6 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
-
+bootJar {
+    enabled = false
 }

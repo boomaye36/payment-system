@@ -1,10 +1,10 @@
 package com.membershipservice.adapter.in.web;
 
+import com.common.WebAdapter;
 import com.membershipservice.application.port.in.FindMembershipCommand;
 import com.membershipservice.application.port.in.FindMembershipUseCase;
 import com.membershipservice.application.port.in.ModifyMembershipCommand;
 import com.membershipservice.application.port.in.ModifyMembershipUseCase;
-import com.membershipservice.common.WebAdapter;
 import com.membershipservice.domain.Membership;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

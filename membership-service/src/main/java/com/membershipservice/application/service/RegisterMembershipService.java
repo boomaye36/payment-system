@@ -1,11 +1,11 @@
 package com.membershipservice.application.service;
 
+import com.common.UseCase;
 import com.membershipservice.adapter.out.persistence.MembershipJpaEntity;
 import com.membershipservice.application.port.in.RegisterMembershipCommand;
 import com.membershipservice.application.port.in.RegisterMembershipUseCase;
 import com.membershipservice.adapter.out.persistence.MembershipMapper;
 import com.membershipservice.application.port.out.RegisterMembershipPort;
-import com.membershipservice.common.UseCase;
 import com.membershipservice.domain.Membership;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

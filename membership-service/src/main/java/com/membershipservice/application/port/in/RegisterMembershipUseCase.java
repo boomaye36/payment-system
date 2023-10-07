@@ -1,6 +1,6 @@
 package com.membershipservice.application.port.in;
 
-import com.membershipservice.common.UseCase;
+import com.common.UseCase;
 import com.membershipservice.domain.Membership;
 
 @UseCase

@@ -1,8 +1,8 @@
 package com.membershipservice.adapter.in.web;
 
+import com.common.WebAdapter;
 import com.membershipservice.application.port.in.RegisterMembershipCommand;
 import com.membershipservice.application.port.in.RegisterMembershipUseCase;
-import com.membershipservice.common.WebAdapter;
 import com.membershipservice.domain.Membership;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,5 +1,6 @@
 package com.membershipservice.application.service;
 
+import com.common.UseCase;
 import com.membershipservice.adapter.out.persistence.MembershipJpaEntity;
 import com.membershipservice.adapter.out.persistence.MembershipMapper;
 import com.membershipservice.application.port.in.FindMembershipCommand;
@@ -9,7 +10,6 @@ import com.membershipservice.application.port.in.ModifyMembershipUseCase;
 import com.membershipservice.application.port.out.FindMembershipPort;
 import com.membershipservice.application.port.out.ModifyMembershipPort;
 import com.membershipservice.application.port.out.RegisterMembershipPort;
-import com.membershipservice.common.UseCase;
 import com.membershipservice.domain.Membership;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
