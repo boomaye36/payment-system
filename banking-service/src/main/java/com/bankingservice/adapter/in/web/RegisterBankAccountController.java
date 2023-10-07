@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @WebAdapter
 public class RegisterBankAccountController {
     private final RegisterBankAccountUseCase registerBankAccountUseCase;
-    @PostMapping("/membership/register")
+    @PostMapping("/banking/register")
     RegisteredBankAccount registeredBankAccount(@RequestBody RegisterBankAccountRequest request){
         // request
 
@@ -33,7 +33,7 @@ public class RegisterBankAccountController {
         if(registeredBankAccount == null) {
             return null;
         }
-        return registerBankAccountUseCase.registerBankAccount(command);
+        return registeredBankAccount;
 
     }
 }
