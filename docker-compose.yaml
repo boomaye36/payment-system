@@ -88,7 +88,7 @@ services:
       - mysql
     environment:
 
-      - SPRING_DATASOURCE_URL=jdbc:mysql://172.30.1.91:3301/payment
+      - SPRING_DATASOURCE_URL=jdbc:mysql://172.30.1.5:3301/payment
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8Dialect
@@ -108,32 +108,32 @@ services:
 #      - AXON_SERIALIZER_EVENTS=jackson
 #      - AXON_SERIALIZER_MESSAGES=jackson
 #      - AXON_SERIALIZER_GENERAL=xstream
-      - SPRING_DATASOURCE_URL=jdbc:mysql://172.30.1.91:3301/payment
+      - SPRING_DATASOURCE_URL=jdbc:mysql://172.30.1.5:3301/payment
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8Dialect
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 
 #
-#  money-service:
-#    image: fastcampus-pay-money-service:0.0.1-SNAPSHOT
-#    networks:
-#      - fastcampuspay_network
-#    ports:
-#      - "8083:8080"
-#    depends_on:
-#      - axon-server
-#      - mysql
-#    environment:
+  money-service:
+    image: payment-money-service:0.0.1-SNAPSHOT
+    networks:
+      - payment
+    ports:
+      - "8083:8080"
+    depends_on:
+ #     - axon-server
+      - mysql
+    environment:
 #      - AXON_AXONSERVER_SERVERS=axon-server:8124
 #      - AXON_SERIALIZER_EVENTS=jackson
 #      - AXON_SERIALIZER_MESSAGES=jackson
 #      - AXON_SERIALIZER_GENERAL=xstream
-#      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/fastcampus_pay?useSSL=false&allowPublicKeyRetrieval=true
-#      - SPRING_DATASOURCE_USERNAME=mysqluser
-#      - SPRING_DATASOURCE_PASSWORD=mysqlpw
-#      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5InnoDBDialect
-#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_DATASOURCE_URL=jdbc:mysql://192.168.45.213:3301/payment
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL8Dialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
 #
 #  money-local-service:
 #    image: fastcampus-pay-money-local-service:0.0.1-SNAPSHOT

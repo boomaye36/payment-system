@@ -7,6 +7,7 @@ import com.moneyservice.domain.MoneyChangingRequest;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 import java.util.UUID;
 
 @PersistenceAdapter
@@ -33,19 +34,17 @@ public class MoneyChangingRequestPersistenceAdapter implements IncreaseMoneyPort
 
     @Override
     public MemberMoneyJpaEntity increaseMoney(MemberMoney.MembershipId membershipId, int increaseMoneyAmount) {
-        MemberMoneyJpaEntity entity;
-        try{
-             entity = memberMoneyRepository.getById(Long.parseLong(membershipId.getMembershipId()));
+        Optional<MemberMoneyJpaEntity> optionalEntity =
+                memberMoneyRepository.findMemberMoneyJpaEntityByMemberId(membershipId.getMembershipId());
 
-        }catch (Exception e){
-            entity = new MemberMoneyJpaEntity(
-                    membershipId.getMembershipId(),
-                    increaseMoneyAmount
-            );
-            return memberMoneyRepository.save(entity);
+        MemberMoneyJpaEntity entity;
+        if (optionalEntity.isPresent()) {
+            entity = optionalEntity.get();
+            entity.setBalance(entity.getBalance() + increaseMoneyAmount);
+        } else {
+            entity = new MemberMoneyJpaEntity(membershipId.getMembershipId(), increaseMoneyAmount);
         }
 
-        entity.setBalance(entity.getBalance() + increaseMoneyAmount);
         return memberMoneyRepository.save(entity);
+        }
     }
-}
