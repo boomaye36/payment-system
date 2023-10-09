@@ -6,6 +6,8 @@ import com.bankingservice.adapter.out.persistence.RegisteredBankAccountJpaEntity
 import com.bankingservice.adapter.out.persistence.RegisteredBankAccountMapper;
 import com.bankingservice.application.port.in.RegisterBankAccountCommand;
 import com.bankingservice.application.port.in.RegisterBankAccountUseCase;
+import com.bankingservice.application.port.out.GetMembershipPort;
+import com.bankingservice.application.port.out.MembershipStatus;
 import com.bankingservice.application.port.out.RegisterBankAccountPort;
 import com.bankingservice.application.port.out.RequestBankAccountInfoPort;
 import com.bankingservice.domain.RegisteredBankAccount;
@@ -28,7 +30,7 @@ public class RegisterBankAccountService implements RegisterBankAccountUseCase {
     private final RegisterBankAccountPort registerBankAccountPort;
     private final RegisteredBankAccountMapper mapper;
     private final RequestBankAccountInfoPort requestBankAccountInfoPort;
-
+    private final GetMembershipPort getMembershipPort;
     @Override
     public RegisteredBankAccount registerBankAccount(RegisterBankAccountCommand command) {
 
@@ -40,6 +42,8 @@ public class RegisterBankAccountService implements RegisterBankAccountUseCase {
         // business logic -> External System
         // port -> Adapter -> External System
         // Port
+        MembershipStatus membershipStatus = getMembershipPort.getMembership(command.getMembershipId());
+        if(!membershipStatus.isValid()) return null;
 
         // 실제 외부 계좌 정보 get
         BankAccount accountInfo = requestBankAccountInfoPort.getBankAccountInfo(

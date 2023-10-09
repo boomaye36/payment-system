@@ -16,7 +16,7 @@ public class LoggingProducer {
 
 
     public LoggingProducer(@Value("${kafka.clusters.bootstrapservers}") String bootstrapServers,
-                           @Value("${logging.topic}") String topic, KafkaProducer<String, String> producer, String topic1){
+                           @Value("${logging.topic}") String topic){
 
         // producer 초기화
         Properties props = new Properties(); // 브로커 여러 개 가능

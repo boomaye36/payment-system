@@ -51,7 +51,8 @@ task wrapper(type: Wrapper){
 tasks.register("prepareKotlinBuildScriptModel"){}
 
 docker {
-	name "${rootProject.name}-${project.name}:${version}" // Set the Docker image name
+	println(tasks.bootJar.outputs.files)
+	name rootProject.name+'-'+project.name + ":" + version
 	dockerfile file('../Dockerfile')
 	files tasks.bootJar.outputs.files
 	buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
